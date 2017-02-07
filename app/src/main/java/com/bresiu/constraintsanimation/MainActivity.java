@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.TransitionManager;
 import android.view.View;
 
 import butterknife.BindView;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.applyButton)
     public void onApplyClick(View view) {
+        TransitionManager.beginDelayedTransition(constraintLayout);
         applyConstraintSet.setMargin(R.id.button1, ConstraintSet.START, 8);
         applyConstraintSet.applyTo(constraintLayout);
     }
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.resetButton)
     public void onResetClick(View view) {
+        TransitionManager.beginDelayedTransition(constraintLayout);
         resetConstraintSet.applyTo(constraintLayout);
     }
 }
