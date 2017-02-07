@@ -31,7 +31,17 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.applyButton)
     public void onApplyClick(View view) {
         TransitionManager.beginDelayedTransition(constraintLayout);
-        applyConstraintSet.setMargin(R.id.button1, ConstraintSet.START, 8);
+        applyConstraintSet.setMargin(R.id.button1, ConstraintSet.START, 0);
+        applyConstraintSet.setMargin(R.id.button1, ConstraintSet.END, 0);
+        applyConstraintSet.setMargin(R.id.button2, ConstraintSet.START, 0);
+        applyConstraintSet.setMargin(R.id.button2, ConstraintSet.END, 0);
+        applyConstraintSet.setMargin(R.id.button2, ConstraintSet.TOP, 0);
+        applyConstraintSet.setMargin(R.id.button3, ConstraintSet.START, 0);
+        applyConstraintSet.setMargin(R.id.button3, ConstraintSet.END, 0);
+        applyConstraintSet.setMargin(R.id.button3, ConstraintSet.TOP, 0);
+        applyConstraintSet.centerHorizontally(R.id.button1, R.id.main);
+        applyConstraintSet.centerHorizontally(R.id.button2, R.id.main);
+        applyConstraintSet.centerHorizontally(R.id.button3, R.id.main);
         applyConstraintSet.applyTo(constraintLayout);
     }
 
