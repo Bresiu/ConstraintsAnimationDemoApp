@@ -2,4 +2,4 @@
 
 Playground for ```ConstraintLayout```
 
-![constraints_animation.gif](quiver-image-url/E5696855ECB181FE3516A80DC6E546E6.gif)
+![constraints_animation.gif](https://github.com/Bresiu/ConstraintsAnimationDemoApp/blob/master/gif/constraints_animation.gif)
