@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 		TransitionManager.beginDelayedTransition(constraintLayout);
 		//firstSample();
 		//secondSample();
-		//thirdSample();
+		thirdSample();
 		fourthSample();
 		applyConstraintSet.applyTo(constraintLayout);
 	}
