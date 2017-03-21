@@ -39,6 +39,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="50dp"
 			android:layout_marginTop="70dp"
+			android:gravity="center_vertical"
 			android:backgroundTint="@color/colorYellow"
 			android:text="@string/button_1"
 			app:layout_constraintLeft_toLeftOf="parent"
@@ -109,6 +110,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="1px"
 					android:visibility="gone"
+					android:alpha="0"
 					android:background="#455A64"/>
 
 			<EditText

@@ -4,8 +4,14 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.constraint.solver.widgets.ConstraintWidget;
+import android.support.transition.ChangeBounds;
+import android.support.transition.Fade;
+import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
+import android.support.transition.TransitionSet;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.EditText;
 import butterknife.BindView;
@@ -14,9 +20,11 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
+	private static final int ANIMATION_DURATION = 400;
 	@BindView(R.id.main) ConstraintLayout constraintLayout;
 	@BindView(R.id.edit_text_2) EditText secondEditText;
 	@BindView(R.id.divider) View dividerView;
+	@BindView(R.id.search_filter_card) CardView searchCard;
 	private ConstraintSet applyConstraintSet = new ConstraintSet();
 	private ConstraintSet resetConstraintSet = new ConstraintSet();
 
@@ -29,10 +37,15 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	@SuppressWarnings("unused") @OnClick(R.id.applyButton) public void onApplyClick(View view) {
-		TransitionManager.beginDelayedTransition(constraintLayout);
+		Transition transition = new TransitionSet().addTransition(new ChangeBounds())
+				.setOrdering(TransitionSet.ORDERING_TOGETHER)
+				.addTransition(new Fade(Fade.IN))
+				.setInterpolator(new FastOutSlowInInterpolator())
+				.setDuration(ANIMATION_DURATION);
+		TransitionManager.beginDelayedTransition(constraintLayout, transition);
 		//firstSample();
 		//secondSample();
-		thirdSample();
+		//thirdSample();
 		fourthSample();
 		applyConstraintSet.applyTo(constraintLayout);
 	}
@@ -103,19 +116,27 @@ public class MainActivity extends AppCompatActivity {
 		applyConstraintSet.connect(R.id.search_filter_card, ConstraintSet.TOP, R.id.main, ConstraintSet.TOP, 0);
 		applyConstraintSet.connect(R.id.search_filter_card, ConstraintSet.LEFT, R.id.main, ConstraintSet.LEFT, 0);
 		applyConstraintSet.connect(R.id.search_filter_card, ConstraintSet.RIGHT, R.id.main, ConstraintSet.RIGHT, 0);
-
 		applyConstraintSet.setVisibility(R.id.edit_text_2, ConstraintSet.VISIBLE);
 		applyConstraintSet.setVisibility(R.id.divider, ConstraintSet.VISIBLE);
 		applyConstraintSet.constrainHeight(R.id.search_filter_card, ConstraintSet.WRAP_CONTENT);
-		//secondEditText.setVisibility(VISI);
-		//dividerView.setVisibility(View.VISIBLE);
-		secondEditText.animate().alpha(1).start();
+		secondEditText.setVisibility(View.VISIBLE);
+		dividerView.setVisibility(View.VISIBLE);
+		secondEditText.setAlpha(1);
+		dividerView.setAlpha(1);
+		searchCard.setRadius(0);
 	}
 
 	@SuppressWarnings("unused") @OnClick(R.id.resetButton) public void onResetClick(View view) {
-		TransitionManager.beginDelayedTransition(constraintLayout);
+
+		Transition transition = new TransitionSet().addTransition(new ChangeBounds())
+				.setOrdering(TransitionSet.ORDERING_TOGETHER)
+				.addTransition(new Fade(Fade.OUT))
+				.setInterpolator(new FastOutSlowInInterpolator())
+				.setDuration(ANIMATION_DURATION);
+		TransitionManager.beginDelayedTransition(constraintLayout, transition);
 		secondEditText.setVisibility(View.GONE);
 		dividerView.setVisibility(View.GONE);
+		searchCard.setRadius(2 * getResources().getDisplayMetrics().density);
 		resetConstraintSet.applyTo(constraintLayout);
 	}
 }
