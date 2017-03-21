@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 		TransitionManager.beginDelayedTransition(constraintLayout, transition);
 		//firstSample();
 		//secondSample();
-		//thirdSample();
+		thirdSample();
 		fourthSample();
 		applyConstraintSet.applyTo(constraintLayout);
 	}
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
 		applyConstraintSet.connect(R.id.button2, ConstraintSet.RIGHT, R.id.button3, ConstraintSet.LEFT, 0);
 		applyConstraintSet.connect(R.id.button3, ConstraintSet.LEFT, R.id.button2, ConstraintSet.RIGHT, 0);
 
-		applyConstraintSet.createHorizontalChain(R.id.button1, R.id.button3, new int[] { R.id.button1, R.id.button3 }, null,
-				ConstraintWidget.CHAIN_PACKED);
+		applyConstraintSet.createHorizontalChain(R.id.button1, ConstraintSet.LEFT, R.id.button3, ConstraintSet.RIGHT,
+				new int[] { R.id.button1, R.id.button3 }, null, ConstraintWidget.CHAIN_PACKED);
 
 		applyConstraintSet.setHorizontalBias(R.id.button1, .1f);
 
@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	@SuppressWarnings("unused") @OnClick(R.id.resetButton) public void onResetClick(View view) {
-
 		Transition transition = new TransitionSet().addTransition(new ChangeBounds())
 				.setOrdering(TransitionSet.ORDERING_TOGETHER)
 				.addTransition(new Fade(Fade.OUT))

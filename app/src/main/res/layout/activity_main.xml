@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:card_view="http://schemas.android.com/apk/res-auto"
 		android:id="@+id/main"
-		android:background="@color/colorTeal"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:background="@color/colorTeal">
 
 	<Button
 			android:id="@+id/applyButton"
@@ -43,8 +43,7 @@
 			android:backgroundTint="@color/colorYellow"
 			android:text="@string/button_1"
 			app:layout_constraintLeft_toLeftOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			android:layout_marginLeft="50dp"/>
+			app:layout_constraintTop_toTopOf="parent"/>
 
 	<android.support.v7.widget.AppCompatButton
 			android:id="@+id/button2"
@@ -69,25 +68,28 @@
 			android:backgroundTint="@color/colorRed"
 			android:text="@string/button_3"
 			app:layout_constraintLeft_toLeftOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/button2"
-			android:layout_marginLeft="109dp"/>
+			app:layout_constraintTop_toBottomOf="@+id/button2"/>
 
 	<android.support.v7.widget.CardView
 			android:id="@+id/search_filter_card"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
+			android:layout_margin="6dp"
+			android:layout_marginBottom="0dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"
+			android:layout_marginTop="8dp"
 			android:focusable="true"
 			android:focusableInTouchMode="true"
-			android:layout_margin="6dp"
-			app:cardBackgroundColor="#fffafafa"
-			app:cardCornerRadius="2dp"
-			app:elevation="6dp"
+			card_view:cardBackgroundColor="#fffafafa"
+			card_view:cardCornerRadius="1dp"
+			card_view:elevation="1dp"
+			app:layout_constraintBottom_toTopOf="@+id/applyButton"
+			app:layout_constraintHorizontal_bias="0.0"
 			app:layout_constraintLeft_toLeftOf="parent"
 			app:layout_constraintRight_toRightOf="parent"
-			app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="0dp"
-			app:layout_constraintBottom_toTopOf="@+id/applyButton" app:layout_constraintTop_toTopOf="parent"
-			android:layout_marginTop="8dp" android:layout_marginRight="8dp" android:layout_marginLeft="8dp"
-			app:layout_constraintVertical_bias="0.858">
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_bias="0.8">
 
 		<LinearLayout
 				android:layout_width="match_parent"
@@ -116,7 +118,6 @@
 			<EditText
 					android:id="@+id/edit_text_2"
 					style="@style/SearchViewStyle"
-					android:alpha="0"
 					android:hint="Edit text 2"
 					android:visibility="gone"
 					app:layout_constraintBottom_toBottomOf="@+id/search_filter_card"
